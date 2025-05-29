@@ -10,42 +10,119 @@
     :root {
       --primary-color: #2c3e50;
       --light-bg: #f9f9f9;
-      --dark-bg: #1e1e1e;
-      --light-text: #333;
-      --dark-text: #f9f9f9;
     }
-    body { font-family: 'Segoe UI', sans-serif; background-color: var(--light-bg); color: var(--light-text); transition: all 0.3s ease; }
-    body.dark-mode { background-color: var(--dark-bg); color: var(--dark-text); }
-    header { background: var(--primary-color); color: white; padding: 60px 20px; text-align: center; position: relative; }
+    body { font-family: 'Segoe UI', sans-serif; background-color: var(--light-bg); color: #333; }
+    header { background: var(--primary-color); color: white; padding: 60px 20px; text-align: center; }
     header h1 { font-size: 2.8rem; }
     header p { font-size: 1.1rem; }
-    .profile-pic {
-      width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
-      border: 4px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      position: absolute; top: 20px; left: 20px;
-    }
-    .section { padding: 40px 20px; background: white; margin: 30px auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: 1000px; transition: background 0.3s, color 0.3s; }
-    body.dark-mode .section { background: #2e2e2e; color: var(--dark-text); }
+    .section { padding: 40px 20px; background: white; margin: 30px auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: 1000px; }
     .section h2 { color: var(--primary-color); margin-bottom: 20px; }
     .btn-custom { background: var(--primary-color); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; }
-    .nav-link { color: white !important; margin-right: 20px; }
+    .nav-link { color: white; margin-right: 20px; }
     .progress { height: 20px; margin-bottom: 10px; }
     canvas { max-width: 100%; }
     footer { background: var(--primary-color); color: white; padding: 20px; text-align: center; margin-top: 40px; }
-    .toggle-dark { position: absolute; top: 20px; right: 20px; background: white; color: #333; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
   </style>
 </head>
 <body>
   <header>
-    <img src="https://via.placeholder.com/120" alt="Profile Picture" class="profile-pic" />
-    <button class="toggle-dark" onclick="toggleDarkMode()">🌙 Dark Mode</button>
     <h1>Perarul Selvan R</h1>
     <p>Oracle Trainee Consultant | Chennai, Tamil Nadu</p>
     <p>📱 +91 89039 90604 | ✉️ perarulselvan34@gmail.com</p>
     <a class="btn-custom" href="resume.pdf" download>📄 Download Resume</a>
   </header>
 
-  <!-- Body content trimmed for brevity (it's already saved in your canvas) -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Portfolio</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#summary">Summary</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="section" id="summary">
+    <h2>🔍 Summary</h2>
+    <p>Experienced in Oracle Database, SQL, PL/SQL, and Oracle Cloud Applications. Skilled in database optimization, application development, and ERP support. Strong troubleshooting and team collaboration capabilities.</p>
+  </div>
+
+  <div class="section" id="skills">
+    <h2>🛠️ Technical Skills</h2>
+    <div class="progress"><div class="progress-bar bg-success" style="width: 90%">Oracle SQL/PLSQL</div></div>
+    <div class="progress"><div class="progress-bar bg-info" style="width: 85%">Oracle Forms & Reports</div></div>
+    <div class="progress"><div class="progress-bar bg-warning" style="width: 75%">Oracle Fusion & APEX</div></div>
+    <div class="progress"><div class="progress-bar bg-primary" style="width: 70%">Python</div></div>
+  </div>
+
+  <div class="section" id="experience">
+    <h2>💼 Work Experience</h2>
+    <p><strong>Quadrobay Technologies Pvt Ltd</strong> – Chennai, Tamil Nadu</p>
+    <p><strong>Trainee Consultant</strong> (Apr 2025 – Present)</p>
+    <ul>
+      <li>Supported Oracle EBS for production support and feature enhancements.</li>
+      <li>Collaborated with cross-functional teams to resolve ERP-related issues.</li>
+      <li>Participated in deployment, unit testing, and user acceptance testing.</li>
+    </ul>
+    <p><strong>Internship Trainee</strong> (Oct 2024 – Mar 2025)</p>
+    <ul>
+      <li>Trained in Oracle SQL, PL/SQL, Forms, and EBS framework.</li>
+      <li>Assisted in resolving real-time support tickets and writing documentation.</li>
+    </ul>
+  </div>
+
+  <div class="section" id="projects">
+    <h2>🚀 Projects</h2>
+    <h4>Oracle EBS Support & Enhancements</h4>
+    <ul>
+      <li>Fixed Asset BOM linkage issues by analyzing Oracle concurrent programs and resolving data inconsistencies.</li>
+      <li>Resolved ERP Item Type Sync Issues from NOMCAT to Oracle ERP.</li>
+      <li>Updated Oracle UDT Programs to track deleted user roles and ensure proper data flow to staging tables.</li>
+    </ul>
+    <h4>Prepayment & Pre-Scan Form Enhancements</h4>
+    <ul>
+      <li>Developed and tested Oracle custom forms for managing customer prepayments.</li>
+      <li>Implemented a 3-level approval workflow based on prepayment thresholds.</li>
+      <li>Validated multiple approval scenarios and aligned form logic with business rules.</li>
+    </ul>
+    <canvas id="projectChart" height="150"></canvas>
+  </div>
+
+  <div class="section" id="education">
+    <h2>🎓 Education</h2>
+    <p><strong>B.E. in Electronics and Communication</strong> – Mohamed Sathak Engineering College (2020), CGPA: 7.58</p>
+    <p><strong>HSC:</strong> 64.33% | <strong>SSLC:</strong> 79%</p>
+  </div>
+
+  <div class="section" id="certifications">
+    <h2>📜 Certifications</h2>
+    <ul>
+      <li>Oracle APEX Developer Professional (1Z0-771)</li>
+      <li>Oracle Fusion SCM & ERP Foundations</li>
+      <li>Python & SQL – HackerRank</li>
+    </ul>
+  </div>
+
+  <div class="section" id="contact">
+    <h2>📬 Contact Me</h2>
+    <form action="mailto:perarulselvan34@gmail.com" method="post" enctype="text/plain">
+      <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+      <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+      <textarea name="message" class="form-control" rows="4" placeholder="Your Message" required></textarea>
+      <button class="btn btn-dark mt-2" type="submit">Send</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 Perarul Selvan R. All rights reserved.
+  </footer>
 
   <script>
     const ctx = document.getElementById('projectChart').getContext('2d');
@@ -65,10 +142,6 @@
         }
       }
     });
-
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
-    }
   </script>
 </body>
 </html>
