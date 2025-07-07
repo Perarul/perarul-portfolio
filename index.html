@@ -3,33 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Perarul Selvan R | Interactive Portfolio</title>
+  <title>Perarul Selvan R | Oracle Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    :root {
-      --primary-color: #2c3e50;
-      --light-bg: #f9f9f9;
-    }
-    body { font-family: 'Segoe UI', sans-serif; background-color: var(--light-bg); color: #333; }
-    header { background: var(--primary-color); color: white; padding: 60px 20px; text-align: center; }
-    header h1 { font-size: 2.8rem; }
-    header p { font-size: 1.1rem; }
-    .section { padding: 40px 20px; background: white; margin: 30px auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: 1000px; }
-    .section h2 { color: var(--primary-color); margin-bottom: 20px; }
-    .btn-custom { background: var(--primary-color); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f4f7fa; color: #2c3e50; }
+    header { background: linear-gradient(90deg, #2c3e50, #3498db); color: white; padding: 50px 20px; text-align: center; }
+    .section { padding: 40px 20px; background: white; border-radius: 12px; margin: 20px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: 960px; }
+    .section h2 { color: #2c3e50; margin-bottom: 20px; }
     .nav-link { color: white; margin-right: 20px; }
-    .progress { height: 20px; margin-bottom: 10px; }
-    canvas { max-width: 100%; }
-    footer { background: var(--primary-color); color: white; padding: 20px; text-align: center; margin-top: 40px; }
+    footer { background: #2c3e50; color: white; text-align: center; padding: 20px; }
+    .progress { height: 22px; margin-bottom: 15px; border-radius: 10px; overflow: hidden; }
+    .chart-container { max-width: 600px; margin: 0 auto; }
   </style>
 </head>
 <body>
   <header>
     <h1>Perarul Selvan R</h1>
-    <p>Oracle Trainee Consultant | Chennai, Tamil Nadu</p>
-    <p>📱 +91 89039 90604 | ✉️ perarulselvan34@gmail.com</p>
-    <a class="btn-custom" href="resume.pdf" download>📄 Download Resume</a>
+    <p>Oracle Developer | ERP Consultant | Data Analyst</p>
+    <p>📍 Chennai, Tamil Nadu &nbsp;|&nbsp; 📧 perarulselvan34@gmail.com &nbsp;|&nbsp; 📱 +91 89039 90604</p>
+    <a href="#contact" class="btn btn-light mt-2">📬 Contact Me</a>
   </header>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
@@ -41,7 +34,6 @@
           <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
           <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
           <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
           <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
@@ -50,78 +42,79 @@
   </nav>
 
   <div class="section" id="summary">
-    <h2>🔍 Summary</h2>
-    <p>Experienced in Oracle Database, SQL, PL/SQL, and Oracle Cloud Applications. Skilled in database optimization, application development, and ERP support. Strong troubleshooting and team collaboration capabilities.</p>
+    <h2>🔍 About Me</h2>
+    <p>Motivated Oracle Consultant experienced in PL/SQL, Oracle EBS R12, Forms 10g/12c, and ERP systems. Skilled in troubleshooting, performance optimization, and data integration for enterprise applications. Always eager to learn and innovate in ERP domains.</p>
   </div>
 
   <div class="section" id="skills">
     <h2>🛠️ Technical Skills</h2>
-    <div class="progress"><div class="progress-bar bg-success" style="width: 90%">Oracle SQL/PLSQL</div></div>
-    <div class="progress"><div class="progress-bar bg-info" style="width: 85%">Oracle Forms & Reports</div></div>
-    <div class="progress"><div class="progress-bar bg-warning" style="width: 75%">Oracle Fusion & APEX</div></div>
-    <div class="progress"><div class="progress-bar bg-primary" style="width: 70%">Python</div></div>
+    <div class="progress"><div class="progress-bar bg-success" style="width: 95%">Oracle SQL / PL/SQL</div></div>
+    <div class="progress"><div class="progress-bar bg-info" style="width: 90%">Oracle Forms & Reports</div></div>
+    <div class="progress"><div class="progress-bar bg-warning" style="width: 80%">Oracle EBS / Fusion</div></div>
+    <div class="progress"><div class="progress-bar bg-primary" style="width: 75%">Oracle APEX</div></div>
+    <div class="progress"><div class="progress-bar bg-danger" style="width: 70%">Python</div></div>
+    <div class="progress"><div class="progress-bar bg-secondary" style="width: 60%">Tableau & Excel</div></div>
   </div>
 
   <div class="section" id="experience">
     <h2>💼 Work Experience</h2>
-    <p><strong>Quadrobay Technologies Pvt Ltd</strong> – Chennai, Tamil Nadu</p>
+    <p><strong>Quadrobay Technologies Pvt Ltd</strong> — Chennai, Tamil Nadu</p>
     <p><strong>Trainee Consultant</strong> (Apr 2025 – Present)</p>
     <ul>
-      <li>Supported Oracle EBS for production support and feature enhancements.</li>
-      <li>Collaborated with cross-functional teams to resolve ERP-related issues.</li>
-      <li>Participated in deployment, unit testing, and user acceptance testing.</li>
+      <li>Worked on Oracle EBS Support, BOM Linkage and Item Type Sync enhancements.</li>
+      <li>Used APIs and custom logic for item updates and assignments.</li>
     </ul>
     <p><strong>Internship Trainee</strong> (Oct 2024 – Mar 2025)</p>
     <ul>
-      <li>Trained in Oracle SQL, PL/SQL, Forms, and EBS framework.</li>
-      <li>Assisted in resolving real-time support tickets and writing documentation.</li>
+      <li>Assisted in data analysis, PL/SQL optimization, and Forms deployment.</li>
+      <li>Contributed to real-time ticket resolutions and testing cycles.</li>
     </ul>
   </div>
 
   <div class="section" id="projects">
-    <h2>🚀 Projects</h2>
-    <h4>Oracle EBS Support & Enhancements</h4>
+    <h2>🚀 Key Projects</h2>
+    <h5>Oracle EBS Enhancements – Hofinsoft Technologies</h5>
     <ul>
-      <li>Fixed Asset BOM linkage issues by analyzing Oracle concurrent programs and resolving data inconsistencies.</li>
-      <li>Resolved ERP Item Type Sync Issues from NOMCAT to Oracle ERP.</li>
-      <li>Updated Oracle UDT Programs to track deleted user roles and ensure proper data flow to staging tables.</li>
+      <li>Resolved BOM linkage and ERP sync issues using PL/SQL and concurrent programs.</li>
+      <li>Enhanced item update flow with custom scripts and APIs.</li>
     </ul>
-    <h4>Prepayment & Pre-Scan Form Enhancements</h4>
+    <h5>Prepayment & Pre-Scan – Shanthi Gears Ltd</h5>
     <ul>
-      <li>Developed and tested Oracle custom forms for managing customer prepayments.</li>
-      <li>Implemented a 3-level approval workflow based on prepayment thresholds.</li>
-      <li>Validated multiple approval scenarios and aligned form logic with business rules.</li>
+      <li>Built prepayment form with dynamic workflows and approval logic.</li>
+      <li>Managed deployment of Oracle objects and tested 3-level hierarchy logic.</li>
     </ul>
-    <canvas id="projectChart" height="150"></canvas>
-  </div>
-
-  <div class="section" id="education">
-    <h2>🎓 Education</h2>
-    <p><strong>B.E. in Electronics and Communication</strong> – Mohamed Sathak Engineering College (2020), CGPA: 7.58</p>
-    <p><strong>HSC:</strong> 64.33% | <strong>SSLC:</strong> 79%</p>
+    <h5>iSupplier Portal Validations – TI Cycles</h5>
+    <ul>
+      <li>Implemented OAF personalizations for ASN controls and date validations.</li>
+      <li>Reduced duplicate ASN risks by enforcing PO-level shipment rules.</li>
+    </ul>
+    <div class="chart-container">
+      <canvas id="projectChart"></canvas>
+    </div>
   </div>
 
   <div class="section" id="certifications">
     <h2>📜 Certifications</h2>
     <ul>
-      <li>Oracle APEX Developer Professional (1Z0-771)</li>
-      <li>Oracle Fusion SCM & ERP Foundations</li>
-      <li>Python & SQL – HackerRank</li>
+      <li>Oracle APEX Cloud Developer Professional (1Z0-771)</li>
+      <li>Oracle Fusion ERP & SCM Foundations Associate (1Z0-1160-1, 1Z0-1163-1)</li>
+      <li>Data Analytics Program – Great Learning</li>
+      <li>Workshops: SQL, Tableau, AI Tools</li>
     </ul>
   </div>
 
   <div class="section" id="contact">
     <h2>📬 Contact Me</h2>
     <form action="mailto:perarulselvan34@gmail.com" method="post" enctype="text/plain">
-      <input type="text" name="name" class="form-control" placeholder="Your Name" required>
-      <input type="email" name="email" class="form-control" placeholder="Your Email" required>
-      <textarea name="message" class="form-control" rows="4" placeholder="Your Message" required></textarea>
-      <button class="btn btn-dark mt-2" type="submit">Send</button>
+      <input type="text" name="name" class="form-control mb-2" placeholder="Your Name" required>
+      <input type="email" name="email" class="form-control mb-2" placeholder="Your Email" required>
+      <textarea name="message" class="form-control mb-2" rows="4" placeholder="Your Message" required></textarea>
+      <button class="btn btn-primary" type="submit">Send</button>
     </form>
   </div>
 
   <footer>
-    &copy; 2025 Perarul Selvan R. All rights reserved.
+    &copy; 2025 Perarul Selvan R. Crafted with 💻 and ☕.
   </footer>
 
   <script>
@@ -129,16 +122,19 @@
     new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: ['EBS Support', 'Prepayment Form'],
+        labels: ['EBS Enhancements', 'Prepayment Form', 'iSupplier Validations'],
         datasets: [{
-          label: 'Contribution Level',
-          data: [90, 85],
-          backgroundColor: ['#3498db', '#2ecc71']
+          label: 'Contribution Level (%)',
+          data: [95, 88, 85],
+          backgroundColor: ['#3498db', '#2ecc71', '#f1c40f']
         }]
       },
       options: {
         scales: {
-          y: { beginAtZero: true, max: 100 }
+          y: {
+            beginAtZero: true,
+            max: 100
+          }
         }
       }
     });
