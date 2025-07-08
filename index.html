@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,10 +15,10 @@
     footer { background: #2c3e50; color: white; text-align: center; padding: 20px; }
     .progress { height: 22px; margin-bottom: 15px; border-radius: 10px; overflow: hidden; }
     .chart-container { max-width: 600px; margin: 0 auto; }
+    .btn-resume { margin-top: 10px; display: inline-block; color: #2c3e50; background: #ffffff; border: 2px solid #fff; padding: 8px 16px; border-radius: 5px; text-decoration: none; font-weight: 500; }
   </style>
 
   <script>
-    // Dark Mode Toggle Logic
     function toggleTheme() {
       const body = document.body;
       const currentTheme = body.classList.contains("dark-mode") ? "light" : "dark";
@@ -27,7 +26,6 @@
       localStorage.setItem("theme", currentTheme);
     }
 
-    // Load saved theme on page load
     window.onload = () => {
       const savedTheme = localStorage.getItem("theme");
       if (savedTheme === "dark") {
@@ -35,6 +33,7 @@
       }
     };
   </script>
+
   <style>
     body.dark-mode {
       background: #1e1e1e;
@@ -59,16 +58,16 @@
       .section { padding: 20px 15px; }
     }
   </style>
-  </head>
+</head>
 
 <body>
-  
   <header>
     <button class="btn btn-outline-light theme-toggle" onclick="toggleTheme()">🌓 Toggle Theme</button>
-
     <h1>Perarul Selvan R</h1>
     <p>Oracle Developer | ERP Consultant | Data Analyst</p>
     <p>📍 Chennai, Tamil Nadu &nbsp;|&nbsp; 📧 perarulselvan34@gmail.com &nbsp;|&nbsp; 📱 +91 89039 90604</p>
+    <a href="resume.pdf" class="btn-resume" download>📄 Download Resume</a>
+    <br/>
     <a href="#contact" class="btn btn-light mt-2">📬 Contact Me</a>
   </header>
 
