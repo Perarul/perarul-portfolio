@@ -17,9 +17,55 @@
     .progress { height: 22px; margin-bottom: 15px; border-radius: 10px; overflow: hidden; }
     .chart-container { max-width: 600px; margin: 0 auto; }
   </style>
-</head>
+
+  <script>
+    // Dark Mode Toggle Logic
+    function toggleTheme() {
+      const body = document.body;
+      const currentTheme = body.classList.contains("dark-mode") ? "light" : "dark";
+      body.classList.toggle("dark-mode");
+      localStorage.setItem("theme", currentTheme);
+    }
+
+    // Load saved theme on page load
+    window.onload = () => {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+      }
+    };
+  </script>
+  <style>
+    body.dark-mode {
+      background: #1e1e1e;
+      color: #f4f4f4;
+    }
+    body.dark-mode header,
+    body.dark-mode footer {
+      background: #111;
+    }
+    body.dark-mode .section {
+      background: #2a2a2a;
+      color: #fff;
+    }
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    @media (max-width: 768px) {
+      header h1 { font-size: 1.8rem; }
+      header p, .btn { font-size: 0.9rem; }
+      .section { padding: 20px 15px; }
+    }
+  </style>
+  </head>
+
 <body>
+  
   <header>
+    <button class="btn btn-outline-light theme-toggle" onclick="toggleTheme()">🌓 Toggle Theme</button>
+
     <h1>Perarul Selvan R</h1>
     <p>Oracle Developer | ERP Consultant | Data Analyst</p>
     <p>📍 Chennai, Tamil Nadu &nbsp;|&nbsp; 📧 perarulselvan34@gmail.com &nbsp;|&nbsp; 📱 +91 89039 90604</p>
