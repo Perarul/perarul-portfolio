@@ -2,7 +2,7 @@
 
 This is my personal Oracle Portfolio website showcasing my profile, skills, certifications, and key projects in Oracle EBS, Fusion, and data analytics.
 
-🌐 **Live Demo:** [Click to view](https://your-username.github.io/perarul-portfolio/)  
+🌐 **Live Demo:** [Click to view](https://Perarul.github.io/perarul-portfolio/)  
 📬 **Contact Form:** Integrated Google Form with auto email notifications
 
 ---
