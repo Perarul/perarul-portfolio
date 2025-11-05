@@ -1,185 +1,425 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Perarul Selvan R | Oracle Portfolio</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Perarul Selvan R — Oracle Developer Portfolio</title>
+  <meta name="description" content="Oracle Developer and ERP Consultant specializing in Oracle EBS R12, Fusion Cloud, PL/SQL, and AI-driven automation with VBS & AI Agent Studio.">
+  <meta name="author" content="Perarul Selvan R">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <style>
-    body { font-family: 'Segoe UI', sans-serif; background: #f4f7fa; color: #2c3e50; }
-    header { background: linear-gradient(90deg, #2c3e50, #3498db); color: white; padding: 50px 20px; text-align: center; }
-    .section { padding: 40px 20px; background: white; border-radius: 12px; margin: 20px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: 960px; }
-    .section h2 { color: #2c3e50; margin-bottom: 20px; }
-    .nav-link { color: white; margin-right: 20px; }
-    footer { background: #2c3e50; color: white; text-align: center; padding: 20px; }
-    .progress { height: 22px; margin-bottom: 15px; border-radius: 10px; overflow: hidden; }
-    .chart-container { max-width: 600px; margin: 0 auto; }
+    :root {
+      --bg: #0b1020;
+      --surface: #121833;
+      --card: #0e1430;
+      --text: #e6e9f5;
+      --muted: #98a0c0;
+      --brand: #5b8cff;
+      --brand-2: #7ce7ff;
+      --pill: #1d254d;
+    }
+    [data-theme="light"] {
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --card: #ffffff;
+      --text: #14172a;
+      --muted: #475069;
+      --brand: #2458ff;
+      --brand-2: #00bcd4;
+      --pill: #eef2ff;
+    }
+    html, body { height: 100%; }
+    body {
+      background: radial-gradient(1200px 600px at 20% -10%, rgba(124,231,255,.15), transparent 60%),
+                  radial-gradient(1000px 500px at 110% 10%, rgba(91,140,255,.12), transparent 55%),
+                  var(--bg);
+      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      letter-spacing: .1px;
+    }
+    a { color: var(--brand); }
+    .nav-glass {
+      backdrop-filter: blur(8px);
+      background: rgba(10,13,25,.55);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    [data-theme="light"] .nav-glass {
+      background: rgba(255,255,255,.7);
+      border-color: rgba(10,13,25,.06);
+    }
+    .hero {
+      padding: 92px 0 60px;
+    }
+    .badge-skill {
+      background: var(--pill);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,.08);
+      font-weight: 500;
+    }
+    .card {
+      background: linear-gradient(180deg, var(--surface), var(--card));
+      border: 1px solid rgba(255,255,255,.06);
+      color: var(--text);
+    }
+    .card .text-muted { color: var(--muted) !important; }
+    .section-title {
+      font-weight: 800;
+      letter-spacing: .4px;
+    }
+    .btn-brand {
+      --bs-btn-bg: var(--brand);
+      --bs-btn-border-color: var(--brand);
+      --bs-btn-hover-bg: #355fff;
+      --bs-btn-hover-border-color: #355fff;
+      --bs-btn-color: #fff;
+      border-radius: 12px;
+      padding: .6rem 1rem;
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px dashed rgba(255,255,255,.2);
+      border-radius: 12px;
+    }
+    .timeline-dot {
+      width: 12px; height: 12px; border-radius: 50%; background: var(--brand);
+      box-shadow: 0 0 0 4px rgba(91,140,255,.2);
+    }
+    .footer {
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .icon-pill {
+      display:inline-flex; align-items:center; gap:.5rem; padding:.45rem .7rem; border-radius:999px;
+      background: var(--pill); color: var(--text); border:1px solid rgba(255,255,255,.06);
+      font-size:.95rem;
+    }
+    .kpi {
+      border:1px solid rgba(255,255,255,.08); border-radius: 16px; padding: 1rem;
+      background: linear-gradient(180deg, var(--surface), var(--card));
+      text-align:center;
+    }
+    .kpi h3 { margin: .25rem 0 0; font-weight:800; }
+    .kpi p { margin:0; color:var(--muted); font-size:.95rem; }
+    .shadow-soft { box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+    /* Print */
+    @media print {
+      .no-print { display: none !important; }
+      body { background: #fff; color: #000; }
+      .card, .nav-glass { border: 1px solid #ddd !important; background: #fff !important; }
+    }
   </style>
-
   <script>
-    // Dark Mode Toggle Logic
-    function toggleTheme() {
-      const body = document.body;
-      const currentTheme = body.classList.contains("dark-mode") ? "light" : "dark";
-      body.classList.toggle("dark-mode");
-      localStorage.setItem("theme", currentTheme);
-    }
-
-    // Load saved theme on page load
-    window.onload = () => {
-      const savedTheme = localStorage.getItem("theme");
-      if (savedTheme === "dark") {
-        document.body.classList.add("dark-mode");
-      }
-    };
+    // Theme toggle with persistence
+    const getTheme = () => localStorage.getItem('theme') || 'dark';
+    const setTheme = t => (document.documentElement.setAttribute('data-theme', t), localStorage.setItem('theme', t));
+    document.addEventListener('DOMContentLoaded', () => setTheme(getTheme()));
+    function toggleTheme(){ setTheme(getTheme()==='dark' ? 'light' : 'dark'); }
   </script>
-  <style>
-    body.dark-mode {
-      background: #1e1e1e;
-      color: #f4f4f4;
-    }
-    body.dark-mode header,
-    body.dark-mode footer {
-      background: #111;
-    }
-    body.dark-mode .section {
-      background: #2a2a2a;
-      color: #fff;
-    }
-    .theme-toggle {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-    }
-    @media (max-width: 768px) {
-      header h1 { font-size: 1.8rem; }
-      header p, .btn { font-size: 0.9rem; }
-      .section { padding: 20px 15px; }
-    }
-  </style>
-  </head>
-
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Perarul Selvan R",
+    "jobTitle": "Oracle Developer / ERP Consultant",
+    "email": "mailto:perarulselvan34@gmail.com",
+    "telephone": "+91-8903990604",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Chennai",
+      "addressRegion": "Tamil Nadu",
+      "addressCountry": "IN"
+    },
+    "url": "https://example.com",
+    "sameAs": [
+      "https://www.linkedin.com/in/perarul-selvan-00a40b243",
+      "https://github.com/Perarul"
+    ]
+  }
+  </script>
+</head>
 <body>
-  
-  <header>
-    <button class="btn btn-outline-light theme-toggle" onclick="toggleTheme()">🌓 Toggle Theme</button>
-
-    <h1>Perarul Selvan R</h1>
-    <p>Oracle Developer | ERP Consultant | Data Analyst</p>
-    <p>📍 Chennai, Tamil Nadu &nbsp;|&nbsp; 📧 perarulselvan34@gmail.com &nbsp;|&nbsp; 📱 +91 89039 90604</p>
-    <a href="#contact" class="btn btn-light mt-2">📬 Contact Me</a>
-  </header>
-
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Portfolio</a>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="#summary">Summary</a></li>
+  <!-- Nav -->
+  <nav class="navbar navbar-expand-lg fixed-top nav-glass">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#top">PSR<span class="text-primary">.</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
           <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
           <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
           <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+          <li class="nav-item"><a class="nav-link" href="#certs">Certifications</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
+        <div class="d-flex gap-2">
+          <a class="btn btn-ghost btn-sm" href="./Perarul_Resume-06.pdf" target="_blank" rel="noopener">
+            <i class="bi bi-file-earmark-arrow-down"></i> Resume
+          </a>
+          <button class="btn btn-brand btn-sm" onclick="toggleTheme()"><i class="bi bi-moon-stars"></i> Theme</button>
+        </div>
       </div>
     </div>
   </nav>
 
-  <div class="section" id="summary">
-    <h2>🔍 About Me</h2>
-    <p>Motivated Oracle Consultant experienced in PL/SQL, Oracle EBS R12, Forms 10g/12c, and ERP systems. Skilled in troubleshooting, performance optimization, and data integration for enterprise applications. Always eager to learn and innovate in ERP domains.</p>
-  </div>
-
-  <div class="section" id="skills">
-    <h2>🛠️ Technical Skills</h2>
-    <div class="progress"><div class="progress-bar bg-success" style="width: 95%">Oracle SQL / PL/SQL</div></div>
-    <div class="progress"><div class="progress-bar bg-info" style="width: 90%">Oracle Forms & Reports</div></div>
-    <div class="progress"><div class="progress-bar bg-warning" style="width: 80%">Oracle EBS / Fusion</div></div>
-    <div class="progress"><div class="progress-bar bg-primary" style="width: 75%">Oracle APEX</div></div>
-    <div class="progress"><div class="progress-bar bg-danger" style="width: 70%">Python</div></div>
-    <div class="progress"><div class="progress-bar bg-secondary" style="width: 60%">Tableau & Excel</div></div>
-  </div>
-
-  <div class="section" id="experience">
-    <h2>💼 Work Experience</h2>
-    <p><strong>Quadrobay Technologies Pvt Ltd</strong> — Chennai, Tamil Nadu</p>
-    <p><strong>Trainee Consultant</strong> (Apr 2025 – Present)</p>
-    <ul>
-      <li>Worked on Oracle EBS Support, BOM Linkage and Item Type Sync enhancements.</li>
-      <li>Used APIs and custom logic for item updates and assignments.</li>
-    </ul>
-    <p><strong>Internship Trainee</strong> (Oct 2024 – Mar 2025)</p>
-    <ul>
-      <li>Assisted in data analysis, PL/SQL optimization, and Forms deployment.</li>
-      <li>Contributed to real-time ticket resolutions and testing cycles.</li>
-    </ul>
-  </div>
-
-  <div class="section" id="projects">
-    <h2>🚀 Key Projects</h2>
-    <h5>Oracle EBS Enhancements – Hofinsoft Technologies</h5>
-    <ul>
-      <li>Resolved BOM linkage and ERP sync issues using PL/SQL and concurrent programs.</li>
-      <li>Enhanced item update flow with custom scripts and APIs.</li>
-    </ul>
-    <h5>Prepayment & Pre-Scan – Shanthi Gears Ltd</h5>
-    <ul>
-      <li>Built prepayment form with dynamic workflows and approval logic.</li>
-      <li>Managed deployment of Oracle objects and tested 3-level hierarchy logic.</li>
-    </ul>
-    <h5>iSupplier Portal Validations – TI Cycles</h5>
-    <ul>
-      <li>Implemented OAF personalizations for ASN controls and date validations.</li>
-      <li>Reduced duplicate ASN risks by enforcing PO-level shipment rules.</li>
-    </ul>
-    <div class="chart-container">
-      <canvas id="projectChart"></canvas>
+  <!-- Hero -->
+  <header id="top" class="hero">
+    <div class="container">
+      <div class="row align-items-center gy-4">
+        <div class="col-lg-7">
+          <h1 class="display-5 fw-bold">Perarul Selvan R</h1>
+          <p class="lead text-muted">Oracle Developer • ERP Consultant • AI-driven Automation</p>
+          <div class="d-flex flex-wrap gap-2 my-3">
+            <span class="icon-pill"><i class="bi bi-geo-alt"></i> Chennai, India</span>
+            <a class="icon-pill text-decoration-none" href="mailto:perarulselvan34@gmail.com"><i class="bi bi-envelope"></i> perarulselvan34@gmail.com</a>
+            <a class="icon-pill text-decoration-none" href="tel:+918903990604"><i class="bi bi-telephone"></i> +91 89039 90604</a>
+          </div>
+          <div class="d-flex gap-2">
+            <a class="btn btn-brand" href="#contact"><i class="bi bi-send"></i> Contact</a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/perarul-selvan-00a40b243" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i> LinkedIn</a>
+            <a class="btn btn-ghost" href="https://github.com/Perarul" target="_blank" rel="noopener"><i class="bi bi-github"></i> GitHub</a>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="kpi shadow-soft">
+            <p>Core Focus</p>
+            <h3>Oracle EBS R12 · Fusion Cloud · PL/SQL · VBS · AI Agent Studio</h3>
+          </div>
+          <div class="row mt-3 g-3">
+            <div class="col-4"><div class="kpi"><h3>3+</h3><p>ERP Domains</p></div></div>
+            <div class="col-4"><div class="kpi"><h3>6</h3><p>Key Projects</p></div></div>
+            <div class="col-4"><div class="kpi"><h3>2025</h3><p>Active</p></div></div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </header>
 
-  <div class="section" id="certifications">
-    <h2>📜 Certifications</h2>
-    <ul>
-      <li>Oracle APEX Cloud Developer Professional (1Z0-771)</li>
-      <li>Oracle Fusion ERP & SCM Foundations Associate (1Z0-1160-1, 1Z0-1163-1)</li>
-      <li>Data Analytics Program – Great Learning</li>
-      <li>Workshops: SQL, Tableau, AI Tools</li>
-    </ul>
-  </div>
+  <!-- About -->
+  <section id="about" class="py-4">
+    <div class="container">
+      <div class="card p-4 p-md-5 shadow-soft">
+        <h2 class="section-title mb-3">About</h2>
+        <p class="mb-0 text-muted">
+          Hands-on Oracle Consultant with experience across Oracle EBS R12 and Fusion Cloud (Procurement, Payables, Receivables). 
+          Strong in SQL & PL/SQL, ERP customization, and AI-driven automation using Visual Builder Studio and AI Agent Studio. 
+          Comfortable integrating REST APIs, optimizing concurrent programs, and extending Redwood UI pages to deliver scalable, intelligent ERP solutions.
+        </p>
+      </div>
+    </div>
+  </section>
 
-  <div class="section" id="contact">
-    <h2>📬 Contact Me</h2>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScN8ivnG7OTaqsc3k8JyXQPLRw_MorGb4RargoKCnU04fOwug/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-  </div>
+  <!-- Skills -->
+  <section id="skills" class="py-4">
+    <div class="container">
+      <h2 class="section-title mb-3">Skills</h2>
+      <div class="row g-3">
+        <div class="col-lg-6">
+          <div class="card p-3 h-100">
+            <h6 class="text-muted">Core</h6>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="badge rounded-pill badge-skill">Oracle SQL</span>
+              <span class="badge rounded-pill badge-skill">PL/SQL</span>
+              <span class="badge rounded-pill badge-skill">Oracle EBS R12</span>
+              <span class="badge rounded-pill badge-skill">Oracle Fusion Cloud</span>
+              <span class="badge rounded-pill badge-skill">APEX</span>
+              <span class="badge rounded-pill badge-skill">REST APIs</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card p-3 h-100">
+            <h6 class="text-muted">Tools & Platforms</h6>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="badge rounded-pill badge-skill">VBS</span>
+              <span class="badge rounded-pill badge-skill">AI Agent Studio</span>
+              <span class="badge rounded-pill badge-skill">Forms 10g/12c</span>
+              <span class="badge rounded-pill badge-skill">Reports</span>
+              <span class="badge rounded-pill badge-skill">Toad</span>
+              <span class="badge rounded-pill badge-skill">Tableau</span>
+              <span class="badge rounded-pill badge-skill">Excel (Adv.)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <footer>
-    &copy; 2025 Perarul Selvan R. Crafted with 💻 and ☕.
+  <!-- Experience -->
+  <section id="experience" class="py-4">
+    <div class="container">
+      <h2 class="section-title mb-3">Experience</h2>
+      <div class="card p-4 shadow-soft">
+        <div class="row g-4">
+          <div class="col-md-12">
+            <div class="d-flex align-items-start gap-3">
+              <div class="timeline-dot mt-2"></div>
+              <div>
+                <h5 class="mb-1">Trainee Consultant — Quadrobay Technologies Pvt Ltd</h5>
+                <div class="text-muted">Apr 2025 – Present · Chennai, India</div>
+                <ul class="mt-2">
+                  <li>Oracle EBS support for Asset BOM linkage and ERP item type sync enhancements.</li>
+                  <li>Implemented item update/assignment flows using Oracle APIs and custom scripts.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="d-flex align-items-start gap-3">
+              <div class="timeline-dot mt-2"></div>
+              <div>
+                <h5 class="mb-1">Internship Trainee — Quadrobay Technologies Pvt Ltd</h5>
+                <div class="text-muted">Oct 2024 – Mar 2025 · Chennai, India</div>
+                <ul class="mt-2">
+                  <li>Supported PL/SQL optimization, Forms deployment, and Fusion configuration tasks.</li>
+                  <li>Contributed to ticket resolution and system testing cycles.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="py-4">
+    <div class="container">
+      <h2 class="section-title mb-3">Projects</h2>
+
+      <div class="row g-3">
+        <div class="col-lg-6">
+          <div class="card p-4 h-100">
+            <div class="d-flex justify-content-between align-items-start">
+              <h5>AI Agent Studio + VBS: Fusion Procurement</h5>
+              <span class="badge rounded-pill badge-skill">AI · VBS · REST</span>
+            </div>
+            <p class="text-muted">AI-driven automation for month-end closure analysis and supplier validation. Built action chains, fragments, and agent-to-VBS communication for self-resolving workflows in Fusion.</p>
+            <ul class="small">
+              <li>Configured agents to analyze recurring issues and trigger corrective actions.</li>
+              <li>Integrated external blacklist API for real-time supplier checks within VBS pages.</li>
+              <li>Extended Redwood UI pages for guided user flows.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card p-4 h-100">
+            <div class="d-flex justify-content-between align-items-start">
+              <h5>Fusion Financials — APRO Payments & Reconciliation</h5>
+              <span class="badge rounded-pill badge-skill">PPR · Payables · Cash Mgmt</span>
+            </div>
+            <p class="text-muted">Implemented PPR workflows, APRO integration, and bank statement reconciliation. Set up multi-level approvals, rejection/void handling, and matching rules for cash reconciliation.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card p-4 h-100">
+            <div class="d-flex justify-content-between align-items-start">
+              <h5>Oracle EBS — Support & Enhancements</h5>
+              <span class="badge rounded-pill badge-skill">PL/SQL · EBS</span>
+            </div>
+            <p class="text-muted">Fixed Asset BOM linkage, ERP item type sync, and improved item creation pipeline with post-creation API updates before child org assignments. Added UDT programs for audit and staging flows.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card p-4 h-100">
+            <div class="d-flex justify-content-between align-items-start">
+              <h5>Prepayment & Pre-Scan Form — EBS</h5>
+              <span class="badge rounded-pill badge-skill">Forms · Approvals</span>
+            </div>
+            <p class="text-muted">Migrated/validated a prepayment form with 3-level approval hierarchies, compiling and sequencing dependent DB objects and aligning validations with business rules.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card p-4 h-100">
+            <div class="d-flex justify-content-between align-items-start">
+              <h5>iSupplier Portal — ASN Validation via OAF</h5>
+              <span class="badge rounded-pill badge-skill">OAF · iSupplier</span>
+            </div>
+            <p class="text-muted">Configured OAF personalizations to enforce PO/Need-By constraints, windowed invoice dates, and prevent duplicate ASNs, with user-friendly alerts.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certs" class="py-4">
+    <div class="container">
+      <h2 class="section-title mb-3">Certifications</h2>
+      <div class="card p-4 shadow-soft">
+        <ul class="mb-0">
+          <li>Oracle APEX Cloud Developer Professional (1Z0-771)</li>
+          <li>Oracle Fusion Cloud ERP Foundations Associate (1Z0-1160-1)</li>
+          <li>Oracle Fusion Cloud SCM Foundations Associate (1Z0-1163-1)</li>
+          <li>Data Analytics Program — Great Learning</li>
+          <li>Workshops: SQL, Tableau, AI Tools</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-4">
+    <div class="container">
+      <h2 class="section-title mb-3">Contact</h2>
+      <div class="row g-3">
+        <div class="col-lg-7">
+          <div class="card p-4 h-100">
+            <form action="https://formspree.io/f/xknlbqwd" method="POST">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">Name</label>
+                  <input name="name" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Email</label>
+                  <input type="email" name="email" class="form-control" required>
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Message</label>
+                  <textarea name="message" rows="4" class="form-control" required></textarea>
+                </div>
+                <div class="col-12">
+                  <button class="btn btn-brand" type="submit"><i class="bi bi-send"></i> Send</button>
+                </div>
+              </div>
+            </form>
+            <p class="small text-muted mb-0 mt-2">Or email directly: <a href="mailto:perarulselvan34@gmail.com">perarulselvan34@gmail.com</a></p>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="card p-4 h-100">
+            <h6 class="text-muted">Links</h6>
+            <ul class="list-unstyled mb-3">
+              <li class="mb-2"><i class="bi bi-linkedin"></i> <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/perarul-selvan-00a40b243">LinkedIn</a></li>
+              <li class="mb-2"><i class="bi bi-github"></i> <a target="_blank" rel="noopener" href="https://github.com/Perarul">GitHub</a></li>
+              <li class="mb-2"><i class="bi bi-journal-text"></i> <a target="_blank" rel="noopener" href="https://eportfolio.mygreatlearning.com/perarul-selvan-r">Great Learning Portfolio</a></li>
+            </ul>
+            <h6 class="text-muted">Download</h6>
+            <a class="btn btn-ghost w-100" href="./Perarul_Resume-06.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i> Resume (PDF)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer py-4 mt-4">
+    <div class="container small d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <span>&copy; <span id="y"></span> Perarul Selvan R</span>
+      <span>Built with Bootstrap · Dark/Light theme</span>
+    </div>
   </footer>
 
   <script>
-    const ctx = document.getElementById('projectChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['EBS Enhancements', 'Prepayment Form', 'iSupplier Validations'],
-        datasets: [{
-          label: 'Contribution Level (%)',
-          data: [95, 88, 85],
-          backgroundColor: ['#3498db', '#2ecc71', '#f1c40f']
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true,
-            max: 100
-          }
-        }
-      }
-    });
+    document.getElementById('y').textContent = new Date().getFullYear();
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
